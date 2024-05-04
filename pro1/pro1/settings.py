@@ -73,9 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pro1.wsgi.application'
 
-ALLOWED_HOSTS = ['*',
+ALLOWED_HOSTS = ['127.0.0.1',
     ".ap-northeast-2.compute.amazonaws.com",
-    "ec2-43-201-98-157.ap-northeast-2.compute.amazonaws.com"
+    "ec2-43-201-98-157.ap-northeast-2.compute.amazonaws.com" # 여기가 배스천호스트? 아니면 빈스톡?
 ]
 
 # Database
