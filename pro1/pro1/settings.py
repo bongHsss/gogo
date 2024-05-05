@@ -132,3 +132,21 @@ STATICFILES_DIRS = [BASE_DIR / 'boots/static',]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# AWS Setting
+AWS_REGION = 'ap-northeast-2' #AWS서버의 지역
+AWS_STORAGE_BUCKET_NAME = 'gogo.com' #생성한 버킷 이름
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+#버킷이름.s3.AWS서버지역.amazonaws.com 형식
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME, AWS_REGION)
+# Static Setting
+STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# Media Setting
+ 
+MEDIA_URL = "https://%s/meida/" % AWS_S3_CUSTOM_DOMAIN
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+ 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
